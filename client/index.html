@@ -1,0 +1,40 @@
+<!-- index.html içine eklenecekler -->
+<head>
+  <!-- Socket.io Client kütüphanesi -->
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body>
+
+  <!-- UI Katmanı içine eklenecek Lobi Panelleri -->
+  <div id="ui" class="menu-mode">
+    <!-- ANA MENU (Güncellenmiş) -->
+    <div class="panel" id="p-main">
+      <h1 class="logo">ZOMBIE<span>-X</span></h1>
+      <p class="tag">ÇOK OYUNCULU HAYATTA KALMA</p>
+      <button class="btn" onclick="createRoom()">LOBİ OLUŞTUR</button>
+      <button class="btn" onclick="showPanel('join-room')">LOBİYE KATIL</button>
+      <button class="btn" data-act="avatar">AVATAR</button>
+      <button class="btn" data-act="settings">AYARLAR</button>
+    </div>
+
+    <!-- LOBİYE KATIL PANELİ -->
+    <div class="panel" id="p-join-room">
+      <h2>LOBİ KODU GİR</h2>
+      <input type="text" id="lobby-code-input" placeholder="KOD (örn: X7K9P)" style="font-size:16px; text-align:center; padding:8px;">
+      <button class="btn" onclick="joinRoom(document.getElementById('lobby-code-input').value)">KATIL</button>
+      <button class="btn" data-act="back">GERİ</button>
+    </div>
+
+    <!-- LOBİ ODASI PANELİ -->
+    <div class="panel" id="p-lobby-room">
+      <h2>LOBİ KODU: <span id="lobby-code-display" style="color:#ffe066;"></span></h2>
+      <div class="help">OYUNCULAR:</div>
+      <ul id="player-list" style="list-style:none; padding:0; color:#7cff6b;"></ul>
+      <button class="btn" id="start-btn" onclick="startLobbyGame()">OYUNU BAŞLAT</button>
+    </div>
+  </div>
+
+  <script src="js/network.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/menu.js"></script>
+</body>
